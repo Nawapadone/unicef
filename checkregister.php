@@ -1,4 +1,5 @@
 <?php
+//connect to DB
 $link = mysqli_connect("127.0.0.1", "root", "", "register");
 
 if (!$link) {
@@ -11,8 +12,18 @@ if (!$link) {
 echo "Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL;
 echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
 
-$sql = "INSERT INTO member (firstname, lastname, tel, qrnumber)
-VALUES ('$_POST[F_name]', '$_POST[L_name]', '$_POST[tel]', '$_POST[qrcode]')";
+//timeStamp
+$tz = 'Asia/Bangkok';
+$timestamp = time();
+$dt = new DateTime("now", new DateTimeZone($tz)); //first argument "must" be a string
+$dt->setTimestamp($timestamp); //adjust the object to correct timestamp
+$today = $dt->format('Y-m-d g:i:s a');
+// $today = date("d.m.Y, H:i:s"); 
+
+echo $today;
+
+$sql = "INSERT INTO member (firstname, lastname, tel, qrnumber, day1timestamp, day2timestamp, day3timestamp)
+VALUES ('$_POST[F_name]', '$_POST[L_name]', '$_POST[tel]', '$_POST[qrcode]', '$today', '', '')";
 
 if ($link->query($sql) === TRUE) {
     echo "New record created successfully";
