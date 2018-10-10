@@ -11,8 +11,9 @@
 <body>
 
     <form action="welcome.php" method="post">
-        Name: <input type="text" name="name"><br>
-        E-mail: <input type="text" name="email"><br>
+        FristName: <input type="text" name="F_name"><br>
+        LastName: <input type="text" name="L_name"><br>
+        QR CODE <input type="text" name="qrcode"><br>
         <input type="submit">
     </form>
 
