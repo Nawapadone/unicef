@@ -72,8 +72,9 @@ mysqli_close($link);
                                 <br>
                                 <?php
                                     if (isset($row["firstname"]) && isset($row["lastname"])) {
-                                        echo "<div>";
+                                        echo "<div class='alert alert-warning' role='alert'>";
                                         echo "<br> Name: ". $row["firstname"]. " " . $row["lastname"] . "<br>";
+                                        echo "</div>";
                                     }
                                 ?>
                             </form>
