@@ -22,20 +22,28 @@
                 <img src="img/unicef.svg" style="height: 50px"/>
             </div>
             <div class="body">
-                <form action="welcome.php" method="post">
-                    FirstName: <br>
-                    <input type="text" name="F_name"><br>
-                    LastName: <br>
-                    <input type="text" name="L_name"><br>
-                    tel:       <br>
-                    <input type="text" name="tel"><br>
-                    QR CODE <br>
-                    <input type="text" name="qrcode"><br>
-
-                    <br>
-                    
-                    <input type="submit">
-                </form>
+                <div class="flex-horizontal">
+                    <div class="flex-vertical" style="padding-top: 10%">
+                        <img src="img/title.svg" class="non-selectable"/>
+                        
+                        <form class="form" action="welcome.php" method="post">
+                            FirstName: <br>
+                            <input type="text" name="F_name"><br>
+                            LastName: <br>
+                            <input type="text" name="L_name"><br>
+                            tel:       <br>
+                            <input type="text" name="tel"><br>
+                            QR CODE <br>
+                            <input type="text" name="qrcode"><br>
+        
+                            <br>
+        
+                            <input type="submit">
+                        </form>
+                    </div>
+                    <img src="img/gen-unlimited.svg" class="non-selectable" style="height: 382.5px"/>
+                </div>
+                
             </div>
         </div>
         

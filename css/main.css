@@ -34,12 +34,10 @@ body {
     padding-left: 20%;
     padding-right: 20%;
 
-    padding-top: 48px;
-    padding-bottom: 48px;
-}
-
-.form {
-    
+    /* padding-top: 48px;
+    padding-bottom: 48px; */
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 .body-bg {
@@ -65,4 +63,27 @@ body {
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.flex-vertical {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+
+    /* padding-left: 24px;
+    padding-right: 24px; */
+}
+
+.form {
+    margin-left: 24px;
+    padding: 12px 36px;
 }
