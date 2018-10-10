@@ -25,13 +25,24 @@ $time = $dt->format('g:i:s a');
 
 echo $today;
 session_start();
+
+if($_POST["c_day"] == 'day2'){
+    $day = 'day2timestamp';
+    $linkto = 'timestampday2.php';
+}
+else if($_POST["c_day"] == 'day3'){
+    $day = 'day3timestamp';
+    $linkto = 'timestampday3.php';
+}
+
 $_SESSION["qrcode"] = $_POST["qrcode"];
 $_SESSION["time"] = $time;
-$sql = "UPDATE member SET day2timestamp='$today' WHERE qrnumber=$_POST[qrcode] ";
+
+$sql = "UPDATE member SET  $day ='$today' WHERE qrnumber=$_POST[qrcode] ";
 
 if ($link->query($sql) === TRUE) {
-    // echo "Record updated successfully";
-    header('Location:timestampday2.php');
+    //Record updated successfully
+    header('Location:'.$linkto);
 } else {
     echo "Error updating record: " . $link->error;
 }

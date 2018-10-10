@@ -25,8 +25,11 @@ echo $today;
 $sql = "INSERT INTO member (firstname, lastname, tel, qrnumber, day1timestamp, day2timestamp, day3timestamp)
 VALUES ('$_POST[F_name]', '$_POST[L_name]', '$_POST[tel]', '$_POST[qrcode]', '$today', '', '')";
 
+session_start();
+$_SESSION["status"] = true;
 if ($link->query($sql) === TRUE) {
-    echo "New record created successfully";
+    //New record created successfully
+    header('Location:index.php');
 } else {
     echo "Error: " . $sql . "<br>" . $link->error;
 }

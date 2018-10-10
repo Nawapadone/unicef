@@ -1,9 +1,34 @@
+<?php
+$link = mysqli_connect("127.0.0.1", "root", "", "register");
+
+if (!$link) {
+    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+}
+
+session_start();
+
+if(isset($_SESSION["qrcode"])){
+  
+    $sql = "SELECT firstname, lastname FROM member WHERE qrnumber = $_SESSION[qrcode]";
+    $result = $link->query($sql);
+    if ($result != false) {
+        $row = $result->fetch_assoc();
+    }
+    
+    }
+
+mysqli_close($link);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Register</title>
+    <title>TimeStampDay3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <script src="main.js"></script>
@@ -28,39 +53,38 @@
 
                         <div class="form1">
 
-                            <form action="checkregister.php" method="post">
-                                <h5 style="margin-bottom: 24px">ลงทะเบียน</h5>
-                                <!-- <div class="form-group">
-                                    <label for="F_name">First Name</label>
-                                    <input type="text" class="form-control" id="F_name" name="F_name" placeholder="First name">
-                                </div> -->
-    
+                            <form action="checkqrcode.php" method="post">
+                                <!-- QR-COCE: <input type="text" name="qrcode" autofocus><br> -->
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="F_name" name="F_name" placeholder="First name" autofocus required >
+                                    <input type="text" class="form-control" id="qrcode" name="qrcode" placeholder="QRCODE" autofocus required >
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="L_name" name="L_name" placeholder="Last name" required >
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" id="tel" name="tel" placeholder="Phone number" required >
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="qrcode" name="qrcode" placeholder="QRCODE" required >
-                                </div>
-    
-                                <!-- FirstName: <br>
-                                <input type="text" name="F_name"><br>
-                                LastName: <br>
-                                <input type="text" name="L_name"><br>
-                                tel:       <br>
-                                <input type="text" name="tel"><br>
-                                QR CODE <br>
-                                <input type="text" name="qrcode"><br>
-            
-                                <br> -->
-    
+                                <input type="hidden" id="c_day" name="c_day" value="day3">
+                                <!-- <input type="submit" value="Submit"> -->
                                 <button type="submit" class="btn btn-success text-right" style="margin-top: 8px; float: right;">Submit</button>
-    
+
+                                <br>
+                                <br>
+                                <?php
+                                    echo "<br/>";
+                                    if (isset($row["firstname"]) && isset($row["lastname"])) {
+                                        echo "<div class='alert alert-secondary' role='alert'>";
+                                        // echo "Name: ". $row["firstname"]. " " . $row["lastname"];
+                                        echo "<h4>" . $row["firstname"]. " " . $row["lastname"]."</h4>";
+                                        echo "<hr>";
+                                        echo $_SESSION["time"];
+                                        // echo "</div>";
+                                        // echo "<div class='alert alert-warning' role='alert'>";
+                                        echo "</div>";
+                                    }
+                                    else if (isset($_SESSION["qrcode"])) {
+                                        echo "<div class='alert alert-danger' role='alert'>";
+                                        echo "Error";
+                                        echo "</div>";
+                                    }
+
+                                    $_SESSION["qrcode"] = null;
+                                ?>
                             </form>
                         </div>
                     </div>
