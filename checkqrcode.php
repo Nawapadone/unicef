@@ -22,7 +22,7 @@ $today = $dt->format('Y-m-d g:i:s a');
 echo $today;
 session_start();
 $_SESSION["qrcode"] = $_POST["qrcode"];
-
+$_SESSION["time"] = $today;
 $sql = "UPDATE member SET day2timestamp='$today' WHERE qrnumber=$_POST[qrcode] ";
 
 if ($link->query($sql) === TRUE) {

@@ -20,7 +20,9 @@ if(isset($_SESSION["qrcode"])){
     // echo "qrcode :".$_SESSION["qrcode"]."; ";
     $sql = "SELECT firstname, lastname FROM member WHERE qrnumber = $_SESSION[qrcode]";
     $result = $link->query($sql);
-    $row = $result->fetch_assoc();
+    if ($result != false) {
+        $row = $result->fetch_assoc();
+    }
     // echo "<br> Name: ". $row["firstname"]. " " . $row["lastname"] . "<br>";
     
     }
@@ -71,9 +73,18 @@ mysqli_close($link);
                                 <br>
                                 <br>
                                 <?php
+                                    echo "<br/>";
                                     if (isset($row["firstname"]) && isset($row["lastname"])) {
                                         echo "<div class='alert alert-warning' role='alert'>";
-                                        echo "<br> Name: ". $row["firstname"]. " " . $row["lastname"] . "<br>";
+                                        echo "Name: ". $row["firstname"]. " " . $row["lastname"];
+                                        echo "</div>";
+                                        echo "<div class='alert alert-warning' role='alert'>";
+                                        echo $_SESSION["time"];
+                                        echo "</div>";
+                                    }
+                                    else if (isset($_SESSION["qrcode"])) {
+                                        echo "<div class='alert alert-danger' role='alert'>";
+                                        echo "Error";
                                         echo "</div>";
                                     }
                                 ?>
