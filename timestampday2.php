@@ -8,20 +8,20 @@ if (!$link) {
     exit;
 }
 
-echo "Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL;
-echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
+// echo "Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL;
+// echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
 
 session_start();
 // $_SESSION["qrcode"] = null;
 
-if($_SESSION["qrcode"] != null){
-    echo "inside if\n";
+if(isset($_SESSION["qrcode"])){
+    // echo "inside if\n";
     // $_SESSION["qrcode"] = $_POST["qrcode"];
     // echo "qrcode :".$_SESSION["qrcode"]."; ";
     $sql = "SELECT firstname, lastname FROM member WHERE qrnumber = $_SESSION[qrcode]";
     $result = $link->query($sql);
     $row = $result->fetch_assoc();
-    echo "<br> Name: ". $row["firstname"]. " " . $row["lastname"] . "<br>";
+    // echo "<br> Name: ". $row["firstname"]. " " . $row["lastname"] . "<br>";
     
     }
 
@@ -59,8 +59,23 @@ mysqli_close($link);
                         <div class="form1">
 
                             <form action="checkqrcode.php" method="post">
-                                QR-COCE: <input type="text" name="qrcode" autofocus><br>
-                                <input type="submit" value="Submit">
+                                <!-- QR-COCE: <input type="text" name="qrcode" autofocus><br> -->
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="qrcode" name="qrcode" placeholder="QRCODE" autofocus>
+                                </div>
+
+                                <!-- <input type="submit" value="Submit"> -->
+                                <button type="submit" class="btn btn-success text-right" style="margin-top: 8px; float: right;">Submit</button>
+
+                                <br>
+                                <br>
+                                <?php
+                                    if (isset($row["firstname"]) && isset($row["lastname"])) {
+                                        echo "<div>";
+                                        echo "<br> Name: ". $row["firstname"]. " " . $row["lastname"] . "<br>";
+                                    }
+                                ?>
                             </form>
                         </div>
                     </div>
