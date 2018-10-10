@@ -29,10 +29,10 @@ body {
     background-size: cover; */
     /* background: #eb4000; */
 
-    color: #ffffff;
+    /* color: #ffffff; */
 
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 18%;
+    padding-right: 18%;
 
     /* padding-top: 48px;
     padding-bottom: 48px; */
@@ -68,7 +68,7 @@ body {
 .flex-horizontal {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     padding-left: 24px;
     padding-right: 24px;
@@ -84,6 +84,17 @@ body {
 }
 
 .form {
-    margin-left: 24px;
-    padding: 12px 36px;
+    margin-top: 32px;
+    /* margin-right: -48px; */
+    width: 280px;
+    padding: 20px 16px;
+
+    /* background: #203650d5; */
+    /* color: #ffffff; */
+
+    background: #ffffff;
+    border-style: solid;
+    border-color: #00000001;
+
+    border-radius: 8px;
 }
