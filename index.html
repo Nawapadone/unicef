@@ -9,14 +9,23 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <img class="bg-image" src="img/bg.svg"/>
-    <form action="welcome.php" method="post">
-        FirstName: <input type="text" name="F_name"><br>
-        LastName: <input type="text" name="L_name"><br>
-        tel:       <input type="text" name="tel"><br>
-        QR CODE <input type="text" name="qrcode"><br>
-        <input type="submit">
-    </form>
+    <img class="background" src="img/bg.svg" />
 
+    <div class="main-container">
+        <div class="sponsor-bar">
+            <img src="img/kmutt.svg" style="height: 59.2px"/>
+            <img src="img/saturday-school.svg" style="height: 31.5px"/>
+            <img src="img/unicef.svg" style="height: 50px"/>
+        </div>
+        <div class="body">
+            <form action="welcome.php" method="post">
+                FirstName: <input type="text" name="F_name"><br>
+                LastName: <input type="text" name="L_name"><br>
+                tel:       <input type="text" name="tel"><br>
+                QR CODE <input type="text" name="qrcode"><br>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

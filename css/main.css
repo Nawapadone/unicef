@@ -1,9 +1,53 @@
-/* .bg {
-    background-image: url(/img/bg.svg);
-    background-size: auto;
-} */
+body {
+    margin: 0px;
+}
 
-.bg-image {
-    height: 100%;
+.background{
+    /* color: #999999; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    scale: cover;
+}
+
+.main-container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /* background-image: url(/img/bg.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+.body {
+    /* background-image: url(/img/bg.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    /* background: #eb4000; */
+
+    color: #ffffff;
+
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.body-bg {
     width: 100%;
+    height: auto;
+}
+
+.sponsor-bar {
+    background: #ffffff;
+    height: 80px;
+    padding-left: 20%;
+    padding-right: 20%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
