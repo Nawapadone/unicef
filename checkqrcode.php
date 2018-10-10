@@ -17,12 +17,16 @@ $timestamp = time();
 $dt = new DateTime("now", new DateTimeZone($tz)); //first argument "must" be a string
 $dt->setTimestamp($timestamp); //adjust the object to correct timestamp
 $today = $dt->format('Y-m-d g:i:s a');
-// $today = date("d.m.Y, H:i:s"); 
+// $today = date("d.m.Y, H:i:s");
+
+//timeStamp show web
+$time = $dt->format('g:i:s a');
+
 
 echo $today;
 session_start();
 $_SESSION["qrcode"] = $_POST["qrcode"];
-$_SESSION["time"] = $today;
+$_SESSION["time"] = $time;
 $sql = "UPDATE member SET day2timestamp='$today' WHERE qrnumber=$_POST[qrcode] ";
 
 if ($link->query($sql) === TRUE) {

@@ -64,7 +64,7 @@ mysqli_close($link);
                                 <!-- QR-COCE: <input type="text" name="qrcode" autofocus><br> -->
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="qrcode" name="qrcode" placeholder="QRCODE" autofocus>
+                                    <input type="text" class="form-control" id="qrcode" name="qrcode" placeholder="QRCODE" autofocus required >
                                 </div>
 
                                 <!-- <input type="submit" value="Submit"> -->
@@ -75,11 +75,13 @@ mysqli_close($link);
                                 <?php
                                     echo "<br/>";
                                     if (isset($row["firstname"]) && isset($row["lastname"])) {
-                                        echo "<div class='alert alert-warning' role='alert'>";
-                                        echo "Name: ". $row["firstname"]. " " . $row["lastname"];
-                                        echo "</div>";
-                                        echo "<div class='alert alert-warning' role='alert'>";
+                                        echo "<div class='alert alert-secondary' role='alert'>";
+                                        // echo "Name: ". $row["firstname"]. " " . $row["lastname"];
+                                        echo "<h4>" . $row["firstname"]. " " . $row["lastname"]."</h4>";
+                                        echo "<hr>";
                                         echo $_SESSION["time"];
+                                        // echo "</div>";
+                                        // echo "<div class='alert alert-warning' role='alert'>";
                                         echo "</div>";
                                     }
                                     else if (isset($_SESSION["qrcode"])) {
@@ -87,6 +89,8 @@ mysqli_close($link);
                                         echo "Error";
                                         echo "</div>";
                                     }
+
+                                    $_SESSION["qrcode"] = null;
                                 ?>
                             </form>
                         </div>
